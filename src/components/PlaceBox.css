@@ -1,0 +1,11 @@
+.placebox {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+
+.placebox img {
+    width: 100%;
+    height: 90%;
+
+}
