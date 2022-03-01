@@ -15,6 +15,13 @@ export default function Navbar() {
     const handleClick = () => {
         navigate('/')
     }
+
+    const getLogout = () => {
+      navigate('\login')
+      logout()
+     
+    }
+    
   return (
     <div className="navbar">
       <ul>
@@ -40,7 +47,7 @@ export default function Navbar() {
         
         {user && (
         <li>
-          <button className="btn" onClick={logout}>Logout</button>
+          <button className="btn" onClick={getLogout}>Logout</button>
         </li>
         )}
       </ul>

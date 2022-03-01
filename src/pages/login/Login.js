@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useLogin } from "../../hooks/useLogin";
 
@@ -7,10 +8,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const { login, error, isPending } = useLogin();
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password)
+    
   };
 
   return (

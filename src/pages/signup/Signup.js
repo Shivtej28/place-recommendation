@@ -67,10 +67,7 @@ export default function Signup() {
         />
       </label>
 
-      <label>
-        <span>Profile Image</span>
-        <input type="file" onChange={handleFileChanged} />
-      </label>
+     
 
       {!isPending && <button className="btn">Sign up</button>}
       {isPending && (
