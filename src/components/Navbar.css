@@ -1,9 +1,8 @@
 .navbar {
   width: 100%;
   background: var(--green-color);
-  padding: 20px 0;
+  padding: 10px 0;
   box-sizing: border-box;
-  margin-bottom: 60px;
   }
 
 .navbar ul {
@@ -16,8 +15,8 @@
 
 .navbar .logo {
   margin-right: auto;
-  font-size: 24px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 300;
   color: black;
   cursor: pointer;
 }
@@ -31,5 +30,5 @@
 
 .navbar p{
   margin-right: 20px;
-  font-size: 22px;
+  font-size: 20px;
 }

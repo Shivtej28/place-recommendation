@@ -1,0 +1,31 @@
+.get-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 30px;
+    gap: 8px;
+}
+
+.chat-input {
+    color: #111;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    font-size: 18px;
+  
+}
+
+.send {
+    border-radius: 50%;
+    
+}
+
+.from-me {
+    
+    background-color: cornflowerblue;
+    padding: 5px;
+}
+

@@ -53,7 +53,7 @@ label span {
   margin-bottom: 6px;
 }
 
-input {
+/* input {
   padding: 6px 8px;
   width: 100%;
   font-size: 1em;
@@ -61,7 +61,7 @@ input {
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 4px;
-}
+} */
 
 .error {
   color: red;
