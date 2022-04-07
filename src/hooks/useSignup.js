@@ -24,13 +24,16 @@ export const useSignup = () => {
 
             await response.user.updateProfile({displayName})
 
-            dispatch({type: 'LOGIN', payload: response.user})
             await projectFirestore.collection('users').doc(response.user.uid).set({
                 displayName,
                 email,
-                online:true
+                online:true,
+                uid: response.user.uid
             })
-
+            const name = projectFirestore.collection('users').doc(response.user.uid).get('email')
+            console.log(`Email ${name}`);
+            dispatch({type: 'LOGIN', payload: response.user})
+            
             if(!isCancelled){
                 setError(null)
                 setIsPending(false)

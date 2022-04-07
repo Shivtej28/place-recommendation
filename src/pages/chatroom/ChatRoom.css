@@ -1,3 +1,15 @@
+.chat-room {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.show-chat {
+    flex-basis: 190px;
+    
+}
+
 .get-input {
     display: flex;
     justify-content: space-between;
@@ -23,9 +35,28 @@
     
 }
 
+.chatting-box {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
 .from-me {
-    
     background-color: cornflowerblue;
     padding: 5px;
+    margin-left: auto;
+    text-align: end;
+    float: right;
+    border: 1px solid black;
+    width: fit-content;
 }
+
+.from-them {
+    padding: 5px;
+    width: fit-content;
+    text-align: start;
+    border: 1px solid black;
+}
+
+
 

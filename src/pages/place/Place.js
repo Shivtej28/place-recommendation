@@ -30,7 +30,7 @@ export default function Place(props) {
           <div className="place-name">{place.Address}</div>  
           <div className="buttons">
 
-               <button className="btn" onClick={goToChatRoom}>Chat Room</button>
+               <button className="btn" onClick={() => goToChatRoom()}>Chat Room</button>
                <button className="btn">Add Eperience</button>
            
           </div>
@@ -39,15 +39,15 @@ export default function Place(props) {
         </div>
         
       </div>
-      <div className="chat-container">
+      {/* <div className="chat-container">
         <div className="chat">
-           <ChatRoom/> 
+           <ChatRoom placeName={place.Name}/> 
         </div>
         <div className="blogs">
             <div className="blog">Blogs</div>
         </div>
         
-      </div>
+      </div> */}
 
       
       </div>
