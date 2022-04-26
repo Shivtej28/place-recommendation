@@ -11,6 +11,7 @@ import Signup from "./pages/signup/Signup";
 import Place from "./pages/place/Place"
 import ChatRoom from "./pages/chatroom/ChatRoom"
 import { useAuthContext } from "./hooks/useAuthContext";
+import AddBlog from "./pages/addblog/AddBlog";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="/signup" element={user ? <Home/> : <Signup/>}></Route>
             <Route path="/place" element={user ? <Place/> : <Signup/>}></Route>
             <Route path="/chatroom" element={user ? <ChatRoom/> : <Signup/>}></Route>
+            <Route path="/addblog" element={user ? <AddBlog/> : <Signup/>}></Route>
           </Routes>
         </div>
       </BrowserRouter>

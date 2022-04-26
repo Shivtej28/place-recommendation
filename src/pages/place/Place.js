@@ -15,6 +15,11 @@ export default function Place(props) {
       state:place
     })
  }
+ const goToAddBlog = () => {
+  navigate("/addblog", {
+    state:place
+  })
+}
 
   return (
     <div className="place">
@@ -31,7 +36,7 @@ export default function Place(props) {
           <div className="buttons">
 
                <button className="btn" onClick={() => goToChatRoom()}>Chat Room</button>
-               <button className="btn">Add Eperience</button>
+               <button className="btn" onClick={() => goToAddBlog()}>Add Eperience</button>
            
           </div>
         </div>
@@ -39,16 +44,7 @@ export default function Place(props) {
         </div>
         
       </div>
-      {/* <div className="chat-container">
-        <div className="chat">
-           <ChatRoom placeName={place.Name}/> 
-        </div>
-        <div className="blogs">
-            <div className="blog">Blogs</div>
-        </div>
-        
-      </div> */}
-
+      
       
       </div>
     
