@@ -3,30 +3,29 @@ import { useAuthContext } from "./useAuthContext"
 import { useEffect, useState } from "react"
 
 
-export const useChat = () => {
+export const useUploadBlog = () => {
 
     const [ isCancelled, setIsCancelled ] = useState(false)
     const [ error, setError ] = useState(null)
     const [ isPending, setIsPending ] = useState(false)
     const { dispatch, user } = useAuthContext()
-    const [chats, setChats ] = useState([])
+    const [blogs, setBlogs ] = useState([])
 
-    const fetchMessage = async (placeName) => {
-        const allMessages = []
+    const fetchBlog = async (placeName) => {
+        const allBlogs = []
         setIsPending(true)
         try{
-            await projectFirestore.collection("chatbox").doc(placeName).collection('messages')
-            .orderBy('sentAt')
+            await projectFirestore.collection(placeName)
             .onSnapshot((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if(doc) {
-                        allMessages.push(doc.data())
-                    console.log(doc.data());
+                        allBlogs.push(doc.data())
+                    //console.log(doc.data());
                     }
                 })  
             })
-            console.log(isPending);
-            setChats(allMessages)
+            setBlogs(allBlogs)
+            console.log(allBlogs);
        
         }catch(err){
             setError(err)
@@ -36,19 +35,18 @@ export const useChat = () => {
             
     }
 
-    const sendMessage = async (messageText, placeName) => {
+    const uploadBlog = async (place, blog) => {
         setError(null)
         setIsPending(true)
         // console.log(user.uid);
-        const message = {
-            messageText,
-            sentAt : Date.now(),
-            sentBy : user.uid
+        const toUpload = {
+            ...blog,
+            sentBy : user.displayName
         }
+        
         try {
-            projectFirestore.collection("chatbox").doc(placeName)
-                    .collection('messages')
-                    .add(message)
+            projectFirestore.collection(place)
+                    .add(toUpload)
                     
             if(!isCancelled){
                 setIsPending(false)
@@ -66,6 +64,6 @@ export const useChat = () => {
         return () => setIsCancelled(true)
     })
 
-    return {sendMessage, error, isPending, chats, fetchMessage}
+    return {uploadBlog, error, isPending, fetchBlog, blogs}
 
 }

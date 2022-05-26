@@ -15,6 +15,7 @@
     align-items: center;
     padding: 5px;
     gap: 10px;
+    overflow: hidden; 
 }
 
 .address{
@@ -35,8 +36,10 @@
 
 .place-name {
     text-transform: uppercase;
-    margin: 5px;
-    text-align: center;
+    margin: 2px;
+    text-align:center;
+    width: 40%;
+    margin: auto;
 }
 .right {
     width: 35%;
@@ -80,4 +83,32 @@
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.details {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.showBlog {
+    width: 50%;
+    height: 100%;
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    scroll-behavior: smooth;
+
 }

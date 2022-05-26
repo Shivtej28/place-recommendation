@@ -12,6 +12,7 @@ import Place from "./pages/place/Place"
 import ChatRoom from "./pages/chatroom/ChatRoom"
 import { useAuthContext } from "./hooks/useAuthContext";
 import AddBlog from "./pages/addblog/AddBlog";
+import SeeBlog from "./pages/seeblog/SeeBlog"
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
             <Route path="/place" element={user ? <Place/> : <Signup/>}></Route>
             <Route path="/chatroom" element={user ? <ChatRoom/> : <Signup/>}></Route>
             <Route path="/addblog" element={user ? <AddBlog/> : <Signup/>}></Route>
+            <Route path="/seeblog" element={user ? <SeeBlog/> : <Signup/>}></Route>
+          
           </Routes>
         </div>
       </BrowserRouter>

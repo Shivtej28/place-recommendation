@@ -21,6 +21,7 @@ export default function Home() {
         const result = await axios(`https://touristsplacesapi.herokuapp.com/places?name=${keyWord}`)
         console.log(result.data);
         setList(result.data)
+        console.log(list);
        
     } 
 

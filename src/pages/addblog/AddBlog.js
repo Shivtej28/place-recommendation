@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router'
 import './AddBlog.css'
 import { projectStorage } from "../../firebase/config"
+import { useUploadBlog } from '../../hooks/useUploadBlogs'
 
 
 export default function AddBlog() {
@@ -11,7 +12,10 @@ export default function AddBlog() {
 
   const [date, setDate ] = useState(new Date())
   const [blogText, setBlogText] = useState('') 
+  const [err, setErr] = useState('')
+  const [ pending, setPending] = useState(false)
 
+  const {uploadBlog, error, isPending } = useUploadBlog()
   const [imgUrls, setImgUrls] = useState([])
 
   const [files, setFiles] = useState([])
@@ -28,6 +32,7 @@ export default function AddBlog() {
   
   const onUploadSubmission = (e) => {
     e.preventDefault()
+    setPending(true)
     files.forEach(f => {
       const uploadTask = projectStorage.ref(`/images/${f.name}`).put(f)
       //initiates the firebase side uploading 
@@ -38,6 +43,7 @@ export default function AddBlog() {
       }, (err) => {
         //catches the errors
         console.log(err)
+        setErr(err.message)
       }, () => {
         // gets the functions from storage refences the image storage in firebase by the children
         // gets the download url then sets the image from firebase as the value for the imgUrl key:
@@ -47,6 +53,7 @@ export default function AddBlog() {
          })
       })
     })
+    setPending(false)
     
   }
   console.log(imgUrls);
@@ -60,6 +67,7 @@ export default function AddBlog() {
       imgUrls
     }
     console.log(blog);
+    uploadBlog(place.Name, blog)
   }
   
   return (
@@ -69,7 +77,7 @@ export default function AddBlog() {
           <div className="header">
             <div>
             <label>Place Name</label>
-            <input type="text"/>
+            <input type="text" value={place.Name}/>
             </div>
             <div>
             <label>Date at you visited</label>
@@ -78,13 +86,19 @@ export default function AddBlog() {
           </div>
           <input type="file" multiple onChange={onFileChange} className="button" />
 
-            <div className="images">
-              <img className="img" src="https://images.unsplash.com/photo-1650398455697-63cf2c5be8dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
-              <img className="img" src="https://images.unsplash.com/photo-1650398455697-63cf2c5be8dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
-              <img className="img" src="https://images.unsplash.com/photo-1650398455697-63cf2c5be8dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
-            </div>
+            {!pending && <div className="images">
+              
+               {imgUrls.map((url) => (
+                 <img className="img" src={url}/>
+               ))}
+            </div>}
+            {pending && <div>Uploading... </div>}
             <button className="btn" onClick={(e) => onUploadSubmission(e)}>Upload</button>
-            <textarea className="addtext">
+            <textarea 
+              className="addtext"
+              required
+              onChange={(e) => setBlogText(e.target.value)}
+              value={blogText}>
 
             </textarea>
           <button className="btn" onClick={(e) => getBlogReady(e)}>Submit</button>
