@@ -14,11 +14,17 @@ export default function Blog({blog}) {
       state:blog
     })
  }
+
+ const date = new Date(blog.date.seconds*1000)
+  const vDate = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
+  
   return (
     <div className="blog">
       <div className="upper">
-      <FaUserCircle/>
-      <p>{blog.sentBy}</p>
+      
+        <FaUserCircle/>
+        <p>{blog.sentBy}</p>
+        <p>Visited At : {vDate} </p>
       </div>
       <Link to="/seeblog" state={blog} className="read">Read more..</Link>
     </div>

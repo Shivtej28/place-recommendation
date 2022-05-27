@@ -51,13 +51,16 @@ export default function Home() {
 
   return (
     <div className="home">
+    
         <form className="searchbox" onSubmit={fetchData}>
         <div className="input-box">
           <div className="input-field">
           <input 
+            className="input-f"
             type="text"
             onChange={handleFilter}
-            value={keyWord}>
+            value={keyWord}
+            placeholder="Place name">
               
             </input>
             <div className="searchIcon">
